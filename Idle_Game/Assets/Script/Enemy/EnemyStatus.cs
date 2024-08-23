@@ -19,8 +19,9 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     [Header("Enemy's Spawner: ")]
     [SerializeField] private EnemySpawner enemySpawner;
-    [Header("Enemy's Name:")]
-    [SerializeField] private TextMeshProUGUI enemyName;
+
+    [Header("Enemy's Health bar percentage:")]
+    [SerializeField] private TextMeshProUGUI percentageText;
 
     [Header("Despawn Delay: ")]
     [SerializeField] private float delay;
@@ -28,7 +29,7 @@ public class EnemyStatus : MonoBehaviour
     private void OnEnable()
     {
         isDead = false;
-        SetHealth();  
+        SetHealth();
     }
     private void SetHealth()
     {
@@ -39,7 +40,17 @@ public class EnemyStatus : MonoBehaviour
     private void SetHealthBar()
     {
         enemyHealthBar.maxValue = maxHealth;
+        UpdateCurrentHealth();
+    }
+    private void UpdateCurrentHealth()
+    {
         enemyHealthBar.value = currentHealth;
+        UpdateHealthPercentage();
+    }
+    private void UpdateHealthPercentage()
+    {
+        float healthPercentage = (currentHealth / maxHealth) * 100;
+        percentageText.text = healthPercentage.ToString("F1") + "%";
     }
     public void TakeDamage(float damage)
     {
@@ -70,9 +81,10 @@ public class EnemyStatus : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            currentHealth = 0; // to avoid negative value //
             EnemyDead();
         }
-        enemyHealthBar.value = currentHealth;
+        UpdateCurrentHealth();
     }
     private void EnemyDead()
     {
@@ -83,7 +95,7 @@ public class EnemyStatus : MonoBehaviour
     }
     private IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay); // wait for the death animation to finished before despawning or deactivating //
         gameObject.SetActive(false);
     }
     public bool HasHit()

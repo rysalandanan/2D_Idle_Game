@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroAttack : MonoBehaviour
 {
@@ -22,9 +23,15 @@ public class HeroAttack : MonoBehaviour
 
     [Header("Hero's Delay per Attack: ")]
     [SerializeField] private float delay;
+
+    [Header("Hero's Speed Action: ")]
+    [SerializeField] private float actionSpeed;
+    [SerializeField] private Slider actionIndicator;
     
     private void Update()
     {
+        actionIndicator.value += actionSpeed + Time.deltaTime;
+        Debug.Log(actionSpeed);
         for (int i = 0; i < Enemies.Length; i++) // Check the Array //
         {
             if (Enemies[i].activeSelf && !isAttacking) // Find if there are active Enemies //
