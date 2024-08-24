@@ -8,6 +8,7 @@ public class EnemyData : MonoBehaviour
     public void IncreaseHealth() // health increases by 250 everytime a monster died //
     {
         enemyHealth += increaseHealthValue;
+        Debug.Log(enemyHealth);
     }
     public float EnemyHealth
     {

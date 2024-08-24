@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 389616af70137574eba37bba89978c8f
+guid: 91bebc51791eb8745a8a4ec2d1e06719
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,22 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_1_0
+      name: game_menu_0
       rect:
         serializedVersion: 2
-        x: 126
-        y: 1
-        width: 126
-        height: 65
+        x: 0
+        y: 0
+        width: 1924
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b685b42874667764d852a6f12c13d04a
-      internalID: -939424765
+      spriteID: 70f01b1c1f08ae04dad74a1b005c0361
+      internalID: 951520707
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_1_0: -939424765
+      game_menu_0: 951520707
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

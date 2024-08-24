@@ -27,23 +27,34 @@ public class HeroAttack : MonoBehaviour
     [Header("Hero's Speed Action: ")]
     [SerializeField] private float actionSpeed;
     [SerializeField] private Slider actionIndicator;
+
     
     private void Update()
     {
-        actionIndicator.value += actionSpeed + Time.deltaTime;
-        Debug.Log(actionSpeed);
         for (int i = 0; i < Enemies.Length; i++) // Check the Array //
         {
-            if (Enemies[i].activeSelf && !isAttacking) // Find if there are active Enemies //
+            if (Enemies[i].activeSelf) // Find if there are active Enemies //
             {
                 enemyStatus = Enemies[i].GetComponent<EnemyStatus>(); // Get the Enemie's Status component //
-                
-                if (!enemyStatus.IsDead()) // Attack if it's not dead //
+                if (actionIndicator.value < actionIndicator.maxValue && !enemyStatus.IsDead()) // increase combat readiness when it is not equal to max and if the enemy is no dead //
+                {
+                    IncrementAction();
+                }
+                if (!enemyStatus.IsDead() && actionIndicator.value == actionIndicator.maxValue && !isAttacking) // Attack if it's not dead //
                 {
                     StartCoroutine(Attack());
                 }
             }
         }
+    }
+    private void IncrementAction()
+    {
+        actionIndicator.value += (actionSpeed * Time.deltaTime);
+    }
+    private void ResetAction()
+    {
+        // when the action value reached max value or when the player attacks, it will reset the indicator //
+        actionIndicator.value = 0;
     }
     private IEnumerator Attack()
     {
@@ -75,6 +86,7 @@ public class HeroAttack : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        ResetAction();
         attackForm = 0;
         yield return new WaitForSeconds(delay);
         isAttacking = false;

@@ -23,7 +23,6 @@ public class EnemyAnimation : MonoBehaviour
         else if(enemyStatus.IsDead())
         {
             state = CharacterState.death;
-            Debug.Log("Zz");
         }
         else
         {

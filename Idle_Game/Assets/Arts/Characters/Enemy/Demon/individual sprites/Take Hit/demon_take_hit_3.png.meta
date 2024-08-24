@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 389616af70137574eba37bba89978c8f
+guid: b7d74a6fa18da284283ddcbe78332224
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_1_0
+      name: demon_take_hit_3_0
       rect:
         serializedVersion: 2
-        x: 126
+        x: 106
         y: 1
-        width: 126
-        height: 65
+        width: 131
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b685b42874667764d852a6f12c13d04a
-      internalID: -939424765
+      spriteID: 456ffdca4c413a84fb8fe014f7b59a82
+      internalID: 128037068
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_1_0: -939424765
+      demon_take_hit_3_0: 128037068
+      demon_take_hit_3_1: -361048087
+      demon_take_hit_3_2: 2006320672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
