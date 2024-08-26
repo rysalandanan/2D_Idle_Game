@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroAnimation : MonoBehaviour
 {
     private Animator animator;
     private static readonly int State = Animator.StringToHash("state");
-    private enum CharacterState { idle, att1, att2, att3 }
+    private enum CharacterState { idle, att1, att2, att3, sp }
     private HeroAttack heroAttack;
 
     private void Start()
@@ -27,6 +28,9 @@ public class HeroAnimation : MonoBehaviour
                 break;
             case 3:
                 state = CharacterState.att3;
+                break;
+            case 4:
+                state = CharacterState.sp;
                 break;
             default:
                 state = CharacterState.idle;

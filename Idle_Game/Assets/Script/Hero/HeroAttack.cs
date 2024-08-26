@@ -15,11 +15,13 @@ public class HeroAttack : MonoBehaviour
     [SerializeField] private float attack1_Duration;
     [SerializeField] private float attack2_Duration;
     [SerializeField] private float attack3_Duration;
+    [SerializeField] private float attackSP_Duration;
 
     [Header("Hero's Attack Damages: ")]
     [SerializeField] private float attack1_Damage;
     [SerializeField] private float attack2_Damage;
     [SerializeField] private float attack3_Damage;
+    [SerializeField] private float attackSP_Damage;
 
     [Header("Hero's Delay per Attack: ")]
     [SerializeField] private float delay;
@@ -59,7 +61,7 @@ public class HeroAttack : MonoBehaviour
     private IEnumerator Attack()
     {
         isAttacking = true;
-        int ranInd = Random.Range(1, 4); // Generates a random number for attack forms //
+        int ranInd = Random.Range(1, 5); // Generates a random number for attack forms //
         attackForm = ranInd;
 
         float damage = 0;
@@ -77,6 +79,10 @@ public class HeroAttack : MonoBehaviour
             case 3:
                 damage = attack3_Damage;
                 duration = attack3_Duration;
+                break;
+            case 4:
+                damage = attackSP_Damage;
+                duration = attackSP_Duration;
                 break;
         }
         float elapsedTime = 0f;
