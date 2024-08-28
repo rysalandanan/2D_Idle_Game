@@ -88,7 +88,7 @@ public class HeroAttack : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < duration) // keep damaging the enemy while attacking //
         {
-            enemyStatus.TakeDamage(damage);
+            enemyStatus.TakeDamage(damage * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
