@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +24,10 @@ public class EnemyStatus : MonoBehaviour
 
     [Header("Despawn Delay: ")]
     [SerializeField] private float delay;
+    [SerializeField] private TextMeshProUGUI killCountText;
     private float currentHealth;
+
+    int killCount;
     private void OnEnable()
     {
         isDead = false;
@@ -89,6 +91,7 @@ public class EnemyStatus : MonoBehaviour
     private void EnemyDead()
     {
         isDead = true;
+        UpdateKillCount();
         enemyData.IncreaseHealth();
         enemySpawner.SpawnEnemy();
         StartCoroutine(Despawn());
@@ -97,6 +100,11 @@ public class EnemyStatus : MonoBehaviour
     {
         yield return new WaitForSeconds(delay); // wait for the death animation to finished before despawning or deactivating //
         gameObject.SetActive(false);
+    }
+    private void UpdateKillCount()
+    {
+        killCount++;
+        killCountText.text = "X: " + killCount.ToString();
     }
     public bool HasHit()
     {
